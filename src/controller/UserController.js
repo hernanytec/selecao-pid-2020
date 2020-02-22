@@ -7,7 +7,7 @@ module.exports = {
         const acutal_date = new Date() //pega a data atual
 
         let user_data = req.body
-        user_data.foto_url = filename
+        user_data.foto = filename
         user_data.data_cad = acutal_date
         user_data.foto_historico = [filename]
 
