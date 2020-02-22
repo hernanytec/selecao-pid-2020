@@ -7,9 +7,10 @@ const app = express()
 
 mongoose.connect('mongodb+srv://hernany:hernany@pid-lpswc.mongodb.net/pid?retryWrites=true&w=majority', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
 })
-mongoose.set('useCreateIndex', true)
 
 app.use(express.json())
 app.use(routes)

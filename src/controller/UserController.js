@@ -4,20 +4,43 @@ module.exports = {
     async store(req, res) {
         //pega o nome do arquivo que foi salvo em uploads
         const { filename } = req.file
+        const acutal_date = new Date() //pega a data atual
 
         let user_data = req.body
         user_data.foto_url = filename
-        user_data.data_cad = new Date()//pega a data atual
+        user_data.data_cad = acutal_date
+        user_data.foto_historico = [filename]
 
         await User.create(user_data, function (error, result) {
             if (error) {
                 return res.status(500).send(error);
             }
             else {
-                console.log(result)
-                return res.status(200).send({ ok: true });
+                return res.status(200).send(result);
             }
         })
+    },
+
+    async update(req, res) {
+        const { _id } = req.params
+        const { filename } = req.file
+
+        const user = await User.findByIdAndUpdate({ _id }, {
+            foto_url: filename,
+            data_cad: new Date(),
+            //adiciona a nova foto no array de fotos
+            $push: { foto_historico: filename }
+        })
+
+        return user ? res.send(user) : res.status(404).send()
+    },
+
+    async delete(req, res) {
+        const { key } = req.params
+
+        const user = await User.findOneAndDelete({ $or: [{ cpf: key }, { rg: key }] })
+
+        return user ? res.send(user) : res.status(404).send()
     },
 
     //lista todos os usuários
@@ -31,6 +54,7 @@ module.exports = {
         const { nome } = req.params
 
         const users = await User.find({ $text: { $search: nome } })
+
         return res.send(users);
     },
 

@@ -8,6 +8,7 @@ const UserSchema = new mongoogse.Schema({
     nome_mae: String,
     nome_pai: String,
     foto_url: String,
+    foto_historico: [String],
     data_cad: Date
 })
 
