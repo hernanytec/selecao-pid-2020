@@ -1,7 +1,7 @@
 const mongoogse = require('mongoose')
 
 const UserSchema = new mongoogse.Schema({
-    nome: String,
+    nome: { type: String, text: true },
     cpf: { type: String, unique: true },
     rg: { type: String, unique: true },
     data_nasc: Date,

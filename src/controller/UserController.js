@@ -1,6 +1,5 @@
-//index, show, store, update, destroy
-
 const User = require('../models/User')
+
 module.exports = {
     async store(req, res) {
         //pega o nome do arquivo que foi salvo em uploads
@@ -19,5 +18,29 @@ module.exports = {
                 return res.status(200).send({ ok: true });
             }
         })
-    }
+    },
+
+    //lista todos os usuários
+    async index(req, res) {
+        const users = await User.find({})
+        return res.send(users);
+    },
+
+    //lista todos os usuários com determinado nome
+    async indexName(req, res) {
+        const { nome } = req.params
+
+        const users = await User.find({ $text: { $search: nome } })
+        return res.send(users);
+    },
+
+    //busca um usuário dado o cpf ou rg
+    async show(req, res) {
+        const { key } = req.params
+
+        const user = await User.findOne({ $or: [{ cpf: key }, { rg: key }] })
+
+        return user ? res.send(user) : res.status(404).send()
+    },
+
 }
