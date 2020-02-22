@@ -9,6 +9,7 @@ mongoose.connect('mongodb+srv://hernany:hernany@pid-lpswc.mongodb.net/pid?retryW
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+mongoose.set('useCreateIndex', true)
 
 app.use(express.json())
 app.use(routes)
