@@ -26,7 +26,7 @@ module.exports = {
         const { filename } = req.file
 
         const user = await User.findByIdAndUpdate({ _id }, {
-            foto_url: filename,
+            foto: filename,
             data_cad: new Date(),
             //adiciona a nova foto no array de fotos
             $push: { foto_historico: filename }
