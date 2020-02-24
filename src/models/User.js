@@ -16,8 +16,17 @@ const UserSchema = new mongoogse.Schema({
     }
 })
 
+UserSchema.index({ nome: 'text' })
+
 UserSchema.virtual('foto_url').get(function () {
     return `http://localhost:3333/files/${this.foto}`
+})
+
+UserSchema.virtual('historico_foto_url').get(function () {
+    const urls = this.foto_historico.map(s => {
+        return `http://localhost:3333/files/${s}`
+    })
+    return urls
 })
 
 module.exports = mongoogse.model('user', UserSchema)
