@@ -1,0 +1,24 @@
+.gallery {
+    background-color: #eee;
+    padding: 20px;
+}
+
+.gallery h1{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.gallery img{
+    height: 200px;
+    width: 200px;
+}
+
+.img-container{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minMax(250px, 1fr));
+    column-gap: 20px;
+    row-gap: 40px;
+}

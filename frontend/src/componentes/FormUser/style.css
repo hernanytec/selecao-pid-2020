@@ -1,0 +1,24 @@
+label#foto{
+    margin-bottom: 20px;
+    border: 1px dashed #ddd;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label#foto input{
+    display: none;
+}
+
+label#foto.has-foto{
+    border: 0
+}
+
+label#foto.has-foto img{
+    display: none;
+}

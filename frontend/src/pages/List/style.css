@@ -1,0 +1,22 @@
+.card-gallery-container{
+    margin: 30px;
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+.card{
+    height: 100%;
+}
+
+.gallery{
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 700px) {
+    .card-gallery-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+}  
