@@ -6,9 +6,12 @@ import Card from '../../componentes/Card'
 import Gallery from '../../componentes/Gallery'
 
 import './style.css'
+import notFound from '../../assets/page_not_found.svg'
+
 import MenuBar from '../../componentes/MenuBar'
 
 import api from '../../service/api'
+import { Image } from 'react-bootstrap'
 
 export default function Profile({ history }) {
     const user_key = history.location.state
@@ -54,7 +57,10 @@ export default function Profile({ history }) {
                         <Card user={user} allFields />
                         <Gallery fotos={user.historico_foto_url} atualFoto={user.foto_url} />
                     </div>
-                    : null
+                    : <div id='not-found'>
+                        <Image src={notFound} />
+                        <p>Nenhum usuário encontrado</p>
+                    </div>
             }
         </>
     )

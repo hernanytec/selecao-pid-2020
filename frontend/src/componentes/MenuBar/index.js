@@ -9,6 +9,8 @@ export default function MenuBar({ dialogOptions, handleShow, handleClose, handle
 
     const getMenuItems = () => {
         if (profile) {
+            if (!userId)
+                return null
             return (
                 <Button
                     className="ml-auto"
