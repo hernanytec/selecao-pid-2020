@@ -29,7 +29,7 @@ export default function List({ history }) {
 
             <MenuBar />
             {
-                users > 0 ?
+                users.length > 0 ?
                     users.map(user => (
                         <div key={user._id} className='card-gallery-container' >
                             <Card user={user} allFields />
