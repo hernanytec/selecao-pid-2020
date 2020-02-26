@@ -7,4 +7,4 @@
   
 - frontend
   - rode `yarn start` para iniciar
-  - siga o endereço mostrado no console para acesar  aplicação
+  - siga o endereço mostrado no console para acessar  aplicação
